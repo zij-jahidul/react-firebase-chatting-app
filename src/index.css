@@ -1,3 +1,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .main-div {
+        @apply w-1/2 flex flex-col items-end mr-[69px] justify-center;
+    }
+
+    .heading-title {
+        @apply font-nunito text-4xl font-bold;
+    }
+
+    .heading-para {
+        @apply font-nunito text-xl mt-2.5 font-normal;
+    }
+
+    .footer-para {
+        @apply font-nunito mt-7 w-full font-normal text-sm;
+    }
+
+    .input-reg {
+        @apply border border-solid w-full rounded-lg px-10 py-6 mt-9 border-[#B8B9CE] placeholder: font-semibold focus:outline-none;
+    }
+
+    .input-label {
+        @apply font-nunito text-sm font-semibold absolute top-6 left-8 bg-white text-textcolor px-2.5;
+    }
+
+    .btn {
+        @apply w-full text-center bg-primary py-5 font-nunito font-semibold text-xl text-white mt-10;
+    }
+}
