@@ -20,7 +20,7 @@
     }
 
     .input-reg {
-        @apply border border-solid w-full rounded-lg px-10 py-6 mt-9 border-[#B8B9CE] placeholder: font-semibold focus:outline-none;
+        @apply border border-solid w-full rounded-lg px-10 py-6 mt-9 border-[#B8B9CE];
     }
 
     .input-label {
