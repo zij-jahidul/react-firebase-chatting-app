@@ -12,28 +12,30 @@ function Registration() {
           <div className="w-[420px] mt-3">
             <form>
               <div className="relative">
-                <p className="input-label">Email Address</p>
+                <p className="input-label input-label-possition">
+                  Email Address
+                </p>
                 <input
                   type="email"
-                  className="input-reg placeholder:font-semibold focus:outline-none"
+                  className="input-reg custom-css-style"
                   placeholder="Enter Email"
                 />
               </div>
 
               <div className="relative">
-                <p className="input-label">Full Name</p>
+                <p className="input-label input-label-possition">Full Name</p>
                 <input
                   type="email"
-                  className="input-reg placeholder:font-semibold focus:outline-none"
+                  className="input-reg custom-css-style"
                   placeholder="Enter Full Name"
                 />
               </div>
 
               <div className="relative">
-                <p className="input-label">Password</p>
+                <p className="input-label input-label-possition">Password</p>
                 <input
                   type="password"
-                  className="input-reg placeholder:font-semibold focus:outline-none"
+                  className="input-reg custom-css-style"
                   placeholder="Enter Password"
                 />
               </div>
@@ -42,7 +44,7 @@ function Registration() {
 
               <p className="footer-para text-center">
                 Already have an account ?
-                <Link className="font-bold text-[#EA6C00] ml-2" to="/login">
+                <Link className="btn-link" to="/login">
                   Sign In
                 </Link>
               </p>
@@ -56,6 +58,7 @@ function Registration() {
             className="w-full h-screen object-cover"
             src="images/registrationimg.webp"
             loading="lazy"
+            alt="img-one"
           />
         </picture>
       </div>

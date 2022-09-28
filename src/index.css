@@ -20,14 +20,34 @@
     }
 
     .input-reg {
-        @apply border border-solid w-full rounded-lg px-10 py-6 mt-9 border-[#B8B9CE];
+        @apply border-solid w-full py-6 border-[#B8B9CE] border mt-9 rounded-lg px-10;
+    }
+
+    .input-login {
+        @apply border-solid w-full py-6 border-[#B8B9CE] border-b px-2;
+    }
+
+    /* error */
+    .custom-css-style {
+        @apply placeholder:text-inputcolor placeholder:font-semibold focus:outline-none;
     }
 
     .input-label {
-        @apply font-nunito text-sm font-semibold absolute top-6 left-8 bg-white text-textcolor px-2.5;
+        @apply font-nunito text-sm font-semibold bg-white text-textcolor px-2.5;
+    }
+
+    .input-label-possition {
+        @apply absolute top-6 left-8;
     }
 
     .btn {
         @apply w-full text-center bg-primary py-5 font-nunito font-semibold text-xl text-white mt-10;
+    }
+
+    .btn-link {
+        @apply font-bold text-[#EA6C00] ml-2;
+    }
+    .google-btn {
+        @apply border border-solid border-[#B3B3C9] rounded-lg py-4 flex w-[220px] my-10 items-center justify-center cursor-pointer;
     }
 }

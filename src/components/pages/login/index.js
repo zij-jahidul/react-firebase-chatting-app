@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FcGoogle } from 'react-icons/fc';
 
 function Login() {
   return (
@@ -8,22 +9,28 @@ function Login() {
         <div className="w-[520px]">
           <h2 className="heading-title">Login to your account!</h2>
 
-          <div className="w-[420px] mt-3">
+            <Link to='#'>
+              <div className="google-btn">
+                    <FcGoogle className="mr-3 text-lg" /> Login with Google
+              </div>
+            </Link>
+
+          <div className="w-[370px] mt-5">
             <form>
-              <div className="relative">
+              <div className="">
                 <p className="input-label">Email Address</p>
                 <input
                   type="email"
-                  className="input-reg "
+                  className="input-login custom-css-style mb-10"
                   placeholder="Enter Email"
                 />
               </div>
 
-              <div className="relative">
+              <div className="">
                 <p className="input-label">Password</p>
                 <input
                   type="password"
-                  className="input-reg placeholder:text-inputcolor placeholder:font-semibold focus:outline-none"
+                  className="input-login custom-css-style"
                   placeholder="Enter Password"
                 />
               </div>
@@ -32,10 +39,7 @@ function Login() {
 
               <p className="footer-para">
                 Don’t have an account ?
-                <Link
-                  className="font-bold text-[#EA6C00] ml-2"
-                  to="/registration"
-                >
+                <Link className="btn-link" to="/registration">
                   Sign Up
                 </Link>
               </p>
@@ -47,8 +51,9 @@ function Login() {
         <picture>
           <img
             className="w-full h-screen object-cover"
-            src="images/registrationimg.webp"
+            src="images/loginimg.webp"
             loading="lazy"
+            alt="img-one"
           />
         </picture>
       </div>
