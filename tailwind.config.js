@@ -9,8 +9,13 @@ module.exports = {
       colors: {
         primary: "#5F35F5",
         textcolor: "#585D8E",
-        
+
         inputcolor: "#11175D",
+      },
+      screens: {
+        smp: "374px",
+        sml: "684px",
+        mdp: "767px",
       },
     },
   },
