@@ -185,7 +185,7 @@ function Registration() {
                   Correct & Strong Password
                 </p>
               ) : (
-                <p className="font-nunito text-sm pl-3 mt-1">
+                <p className="font-nunito font-bold text-sm pl-3 mt-1">
                   <span className={passAZ ? "text-green-500" : "text-red-500"}>
                     [A-Z]
                   </span>{" "}
