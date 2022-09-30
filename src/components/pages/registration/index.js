@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { RiEyeCloseFill, RiEyeFill } from "react-icons/ri";
 
 function Registration() {
   const [email, setEmail] = useState();
   const [fullname, setFullname] = useState();
   const [password, setPassword] = useState();
-
+  // validation error
   const [emailErr, setEmailErr] = useState();
   const [fullnameErr, setFullnameErr] = useState();
   const [passwordErr, setPasswordErr] = useState();
@@ -16,6 +17,8 @@ function Registration() {
   const [pass09, setPass09] = useState(false);
   const [passsc, setPasssc] = useState(false);
   const [pass8, setPass8] = useState(false);
+  // password show icon for state
+  const [show, setShow] = useState(false);
 
   // all password is correct
   const [passCorrect, setPassCorrect] = useState(false);
@@ -28,6 +31,7 @@ function Registration() {
     setFullname(e.target.value);
     setFullnameErr("");
   };
+
   const handlePassword = (e) => {
     let count = 0;
     // A-Z validation
@@ -77,6 +81,11 @@ function Registration() {
     }
     setPassword(e.target.value);
     setPasswordErr("");
+  };
+
+  // password show handler
+  const handlerPasswordShow = () => {
+    setShow(!show);
   };
 
   const handleSubmit = () => {
@@ -168,11 +177,22 @@ function Registration() {
                 Password
               </p>
               <input
-                type="text"
+                type={show ? "text" : "password"}
                 className="border-solid w-full py-6 border-[#B8B9CE] border mt-9 rounded-lg px-10 placeholder:text-inputcolor placeholder:font-semibold focus:outline-none"
                 placeholder="Enter Password"
                 onChange={handlePassword}
               />
+              {show ? (
+                <RiEyeFill
+                  onClick={handlerPasswordShow}
+                  className="absolute right-5 top-16 cursor-pointer text-lg"
+                />
+              ) : (
+                <RiEyeCloseFill
+                  onClick={handlerPasswordShow}
+                  className="absolute right-5 top-16 cursor-pointer text-lg"
+                />
+              )}
 
               {passwordErr && (
                 <p className="text-red-500 font-nunito font-normal pl-3 mt-1">
@@ -185,7 +205,7 @@ function Registration() {
                   Correct & Strong Password
                 </p>
               ) : (
-                <p className="font-nunito font-bold text-sm pl-3 mt-1">
+                <p className="font-nunito font-bold text-[12px] md:text-sm pl-3 mt-1">
                   <span className={passAZ ? "text-green-500" : "text-red-500"}>
                     [A-Z]
                   </span>{" "}
