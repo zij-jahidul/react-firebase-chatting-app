@@ -3,7 +3,7 @@ import { BiDotsVerticalRounded } from "react-icons/bi";
 import { Link } from "react-router-dom";
 const MyGroups = () => {
   return (
-    <div className="shadow-sm shadow-black p-5 h-[427px] overflow-y-auto scrollbar-hide rounded-3xl mt-5">
+    <div className="shadow-lg shadow-black-500/50 p-5 h-[427px] overflow-y-auto scrollbar-hide rounded-3xl mt-5">
       <div className="flex justify-between">
         <h3 className="font-nunito font-semibold text-xl">
           My Groups
@@ -28,11 +28,11 @@ const MyGroups = () => {
           </picture>
           <div>
             <h3 className="font-nunito font-bold text-lg">Friends Reunion</h3>
-            <p className="font-nunito font-normal text-sm">Hi Guys, Wassup!</p>
+            <p className="font-nunito font-normal text-sm text-[#4D4D4D]">Hi Guys, Wassup!</p>
           </div>
         </div>
         <div>
-          <span>Friday, 2.00PM</span>
+          <span className="font-nunito font-normal text-xs text-[#4D4D4D]">Today, 8:56pm</span>
         </div>
       </div>
       <div className="flex justify-between items-center border-b border-solid pb-1.5 m-5">
@@ -46,11 +46,11 @@ const MyGroups = () => {
           </picture>
           <div>
             <h3 className="font-nunito font-bold text-lg">Friends Reunion</h3>
-            <p className="font-nunito font-normal text-sm">Hi Guys, Wassup!</p>
+            <p className="font-nunito font-normal text-sm text-[#4D4D4D]">Hi Guys, Wassup!</p>
           </div>
         </div>
         <div>
-          <span>Friday, 2.00PM</span>
+          <span className="font-nunito font-normal text-xs text-[#4D4D4D]">Today, 8:56pm</span>
         </div>
       </div>
       <div className="flex justify-between items-center border-b border-solid pb-1.5 m-5">
@@ -64,11 +64,11 @@ const MyGroups = () => {
           </picture>
           <div>
             <h3 className="font-nunito font-bold text-lg">Friends Reunion</h3>
-            <p className="font-nunito font-normal text-sm">Hi Guys, Wassup!</p>
+            <p className="font-nunito font-normal text-sm text-[#4D4D4D]">Hi Guys, Wassup!</p>
           </div>
         </div>
         <div>
-          <span>Friday, 2.00PM</span>
+          <span className="font-nunito font-normal text-xs text-[#4D4D4D]">Today, 8:56pm</span>
         </div>
       </div>
       <div className="flex justify-between items-center border-b border-solid pb-1.5 m-5">
@@ -82,11 +82,11 @@ const MyGroups = () => {
           </picture>
           <div>
             <h3 className="font-nunito font-bold text-lg">Friends Reunion</h3>
-            <p className="font-nunito font-normal text-sm">Hi Guys, Wassup!</p>
+            <p className="font-nunito font-normal text-sm text-[#4D4D4D]">Hi Guys, Wassup!</p>
           </div>
         </div>
         <div>
-          <span>Friday, 2.00PM</span>
+          <span className="font-nunito font-normal text-xs text-[#4D4D4D]">Today, 8:56pm</span>
         </div>
       </div>
       <div className="flex justify-between items-center border-b border-solid pb-1.5 m-5 last:border-0">
@@ -100,11 +100,11 @@ const MyGroups = () => {
           </picture>
           <div>
             <h3 className="font-nunito font-bold text-lg">Friends Reunion</h3>
-            <p className="font-nunito font-normal text-sm">Hi Guys, Wassup!</p>
+            <p className="font-nunito font-normal text-sm text-[#4D4D4D]">Hi Guys, Wassup!</p>
           </div>
         </div>
         <div>
-          <span>Friday, 2.00PM</span>
+          <span className="font-nunito font-normal text-xs text-[#4D4D4D]">Today, 8:56pm</span>
         </div>
       </div>
     </div>

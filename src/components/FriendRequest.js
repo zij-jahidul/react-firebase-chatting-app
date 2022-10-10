@@ -3,7 +3,7 @@ import { BiDotsVerticalRounded } from "react-icons/bi";
 import { Link } from "react-router-dom";
 const FriendRequest = () => {
   return (
-    <div className="shadow-sm shadow-black p-5 h-[427px] overflow-y-auto scrollbar-hide rounded-3xl mt-5">
+    <div className="shadow-lg shadow-black-500/50 p-5 h-[427px] overflow-y-auto scrollbar-hide rounded-3xl mt-5">
       <div className="flex justify-between">
         <h3 className="font-nunito font-semibold text-xl">
           Friend Request
@@ -27,7 +27,7 @@ const FriendRequest = () => {
           </picture>
           <div>
             <h3 className="font-nunito font-bold text-lg">Friends Reunion</h3>
-            <p className="font-nunito font-normal text-sm">Hi Guys, Wassup!</p>
+            <p className="font-nunito font-normal text-sm text-[#4D4D4D]">Hi Guys, Wassup!</p>
           </div>
         </div>
 
@@ -48,7 +48,7 @@ const FriendRequest = () => {
           </picture>
           <div>
             <h3 className="font-nunito font-bold text-lg">Friends Reunion</h3>
-            <p className="font-nunito font-normal text-sm">Hi Guys, Wassup!</p>
+            <p className="font-nunito font-normal text-sm text-[#4D4D4D]">Hi Guys, Wassup!</p>
           </div>
         </div>
         <div>
@@ -68,7 +68,7 @@ const FriendRequest = () => {
           </picture>
           <div>
             <h3 className="font-nunito font-bold text-lg">Friends Reunion</h3>
-            <p className="font-nunito font-normal text-sm">Hi Guys, Wassup!</p>
+            <p className="font-nunito font-normal text-sm text-[#4D4D4D]">Hi Guys, Wassup!</p>
           </div>
         </div>
         <div>
@@ -88,7 +88,7 @@ const FriendRequest = () => {
           </picture>
           <div>
             <h3 className="font-nunito font-bold text-lg">Friends Reunion</h3>
-            <p className="font-nunito font-normal text-sm">Hi Guys, Wassup!</p>
+            <p className="font-nunito font-normal text-sm text-[#4D4D4D]">Hi Guys, Wassup!</p>
           </div>
         </div>
         <div>
@@ -108,7 +108,7 @@ const FriendRequest = () => {
           </picture>
           <div>
             <h3 className="font-nunito font-bold text-lg">Friends Reunion</h3>
-            <p className="font-nunito font-normal text-sm">Hi Guys, Wassup!</p>
+            <p className="font-nunito font-normal text-sm text-[#4D4D4D]">Hi Guys, Wassup!</p>
           </div>
         </div>
         <div>
