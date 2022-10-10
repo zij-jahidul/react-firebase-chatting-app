@@ -73,7 +73,7 @@ function Registration() {
     }
 
     // Correct Password
-    if (count == 5) {
+    if (count === 5) {
       setPassCorrect(true);
       // password save from this;
     } else {
@@ -92,7 +92,7 @@ function Registration() {
     if (!email) {
       setEmailErr("Email field is required");
     } else {
-      if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+      if (!/^\w+([\.-]?\=w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
         setEmailErr("Valid email is required.");
       }
     }
@@ -142,9 +142,8 @@ function Registration() {
               </p>
               <input
                 type="email"
-                className={`border-solid w-full py-6 border mt-9 rounded-lg px-10 placeholder:text-inputcolor placeholder:font-semibold focus:outline-none ${
-                  emailErr ? "border-red-500" : "border-[#B8B9CE]"
-                }`}
+                className={`border-solid w-full py-6 border mt-9 rounded-lg px-10 placeholder:text-inputcolor placeholder:font-semibold focus:outline-none ${emailErr ? "border-red-500" : "border-[#B8B9CE]"
+                  }`}
                 placeholder="Enter Email"
                 onChange={handleEmail}
               />
@@ -162,9 +161,8 @@ function Registration() {
               </p>
               <input
                 type="email"
-                className={`border-solid w-full py-6 border mt-9 rounded-lg px-10 placeholder:text-inputcolor placeholder:font-semibold focus:outline-none ${
-                  fullnameErr ? "border-red-500" : "border-[#B8B9CE]"
-                }`}
+                className={`border-solid w-full py-6 border mt-9 rounded-lg px-10 placeholder:text-inputcolor placeholder:font-semibold focus:outline-none ${fullnameErr ? "border-red-500" : "border-[#B8B9CE]"
+                  }`}
                 placeholder="Enter Full Name"
                 onChange={handleFullName}
               />
@@ -182,9 +180,8 @@ function Registration() {
               </p>
               <input
                 type={show ? "text" : "password"}
-                className={`border-solid w-full py-6 border mt-9 rounded-lg px-10 placeholder:text-inputcolor placeholder:font-semibold focus:outline-none ${
-                  passwordErr ? "border-red-500" : "border-[#B8B9CE]"
-                }`}
+                className={`border-solid w-full py-6 border mt-9 rounded-lg px-10 placeholder:text-inputcolor placeholder:font-semibold focus:outline-none ${passwordErr ? "border-red-500" : "border-[#B8B9CE]"
+                  }`}
                 placeholder="Enter Password"
                 onChange={handlePassword}
               />
