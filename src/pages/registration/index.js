@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { RiEyeCloseFill, RiEyeFill } from "react-icons/ri";
-
+import { FcGoogle } from "react-icons/fc";
 function Registration() {
   const [email, setEmail] = useState();
   const [fullname, setFullname] = useState();
@@ -134,6 +134,12 @@ function Registration() {
           <p className="font-nunito md:text-xl mt-2.5 font-normal text-center md:text-left">
             Free register and you can enjoy it
           </p>
+
+          <Link to="/">
+            <div className="border border-solid border-[#B3B3C9] rounded-lg py-4 flex w-[220px] my-10 mx-auto md:mx-0 items-center justify-center cursor-pointer">
+              <FcGoogle className="mr-3 text-lg" /> Go to Home
+            </div>
+          </Link>
 
           <div className="w-[320px] md:w-[420px] mt-3">
             <div className="relative">

@@ -51,9 +51,9 @@ function Login() {
             Login to your account!
           </h2>
 
-          <Link to="#">
+          <Link to="/">
             <div className="border border-solid border-[#B3B3C9] rounded-lg py-4 flex w-[220px] my-10 mx-auto md:mx-0 items-center justify-center cursor-pointer">
-              <FcGoogle className="mr-3 text-lg" /> Login with Google
+              <FcGoogle className="mr-3 text-lg" /> Go to Home
             </div>
           </Link>
 

@@ -48,7 +48,10 @@ const Sidebar = ({ active }) => {
 
         <IoMdNotificationsOutline className="text-5xl" />
         <FiSettings className="text-5xl" />
-        <MdLogout className="text-5xl mt-32" />
+
+        <Link to="/registration">
+          <MdLogout className="text-5xl mt-32" />
+        </Link>
       </div>
     </div>
   );
