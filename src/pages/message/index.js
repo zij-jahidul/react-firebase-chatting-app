@@ -7,9 +7,15 @@ const Message = () => {
       <div className="max-w-[186px]">
         <Sidebar active="message" />
       </div>
-      <div className="max-w-[427px]"></div>
-      <div className="max-w-[344px]"></div>
-      <div className="max-w-[344px]"></div>
+      <div className="max-w-[427px]">
+        <h2>Message Page</h2>
+      </div>
+      <div className="max-w-[344px]">
+        <h2>Message Page</h2>
+      </div>
+      <div className="max-w-[344px]">
+        <h2>Message Page</h2>
+      </div>
     </div>
   );
 };
