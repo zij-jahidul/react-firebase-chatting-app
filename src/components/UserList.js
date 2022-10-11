@@ -3,7 +3,7 @@ import { BiDotsVerticalRounded } from "react-icons/bi";
 import { Link } from "react-router-dom";
 const UserList = () => {
   return (
-    <div className="shadow-lg shadow-black-500/50 p-5 h-[500px] overflow-y-auto scrollbar-hide rounded-3xl mt-3">
+    <div className="shadow-lg shadow-black-500/50 p-5 h-[455px] overflow-y-auto scrollbar-hide rounded-3xl mt-5">
       <div className="flex justify-between">
         <h3 className="font-nunito font-semibold text-xl">
           Users

@@ -3,7 +3,7 @@ import { BiDotsVerticalRounded, BiSearch } from "react-icons/bi";
 
 const Search = () => {
   return (
-    <div className="relative">
+    <div className="relative mt-5">
       <span>
         <BiSearch className="font-nunito font-semibold text-[28px] cursor-pointer absolute top-6 left-3" />
       </span>

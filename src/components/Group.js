@@ -3,7 +3,7 @@ import { BiDotsVerticalRounded } from "react-icons/bi";
 import { Link } from "react-router-dom";
 const Group = () => {
   return (
-    <div className="shadow-lg shadow-black-500/50 p-5 h-[427px] overflow-y-auto scrollbar-hide rounded-3xl mt-5">
+    <div className="shadow-lg shadow-black-500/50 p-5 h-[370px] overflow-y-auto scrollbar-hide rounded-3xl mt-5">
       <div className="flex justify-between">
         <h3 className="font-nunito font-semibold text-xl">
           Groups Request
@@ -16,7 +16,7 @@ const Group = () => {
         </span>
       </div>
 
-      <div className="flex justify-between items-center border-b border-solid pb-1.5 m-5">
+      <div className="flex justify-between items-center border-b border-solid pb-2.5 m-5">
         <div className="flex items-center gap-5">
           <picture>
             <img
@@ -36,7 +36,7 @@ const Group = () => {
           </button>
         </div>
       </div>
-      <div className="flex justify-between items-center border-b border-solid pb-1.5 m-5">
+      <div className="flex justify-between items-center border-b border-solid pb-2.5 m-5">
         <div className="flex items-center gap-5">
           <picture>
             <img
@@ -56,7 +56,7 @@ const Group = () => {
           </button>
         </div>
       </div>
-      <div className="flex justify-between items-center border-b border-solid pb-1.5 m-5">
+      <div className="flex justify-between items-center border-b border-solid pb-2.5 m-5">
         <div className="flex items-center gap-5">
           <picture>
             <img
@@ -76,7 +76,7 @@ const Group = () => {
           </button>
         </div>
       </div>
-      <div className="flex justify-between items-center border-b border-solid pb-1.5 m-5">
+      <div className="flex justify-between items-center border-b border-solid pb-2.5 m-5">
         <div className="flex items-center gap-5">
           <picture>
             <img
@@ -96,7 +96,7 @@ const Group = () => {
           </button>
         </div>
       </div>
-      <div className="flex justify-between items-center border-b border-solid pb-1.5 m-5 last:border-0">
+      <div className="flex justify-between items-center border-b border-solid pb-2.5 m-5 last:border-0">
         <div className="flex items-center gap-5">
           <picture>
             <img

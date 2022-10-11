@@ -50,7 +50,7 @@ const Sidebar = ({ active }) => {
         <FiSettings className="text-5xl" />
 
         <Link to="/registration">
-          <MdLogout className="text-5xl mt-32" />
+          <MdLogout className="text-5xl mt-[127px]" />
         </Link>
       </div>
     </div>
