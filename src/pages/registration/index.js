@@ -2,7 +2,15 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { RiEyeCloseFill, RiEyeFill } from "react-icons/ri";
 import { FcGoogle } from "react-icons/fc";
+// import {
+//   getAuth,
+//   createUserWithEmailAndPassword,
+//   sendEmailVerification,
+//   updateProfile,
+// } from "firebase/auth";
+
 function Registration() {
+  // const auth = getAuth();
   const [email, setEmail] = useState();
   const [fullname, setFullname] = useState();
   const [password, setPassword] = useState();
@@ -19,6 +27,8 @@ function Registration() {
   const [pass8, setPass8] = useState(false);
   // password show icon for state
   const [show, setShow] = useState(false);
+
+
 
   // all password is correct
   const [passCorrect, setPassCorrect] = useState(false);
@@ -122,6 +132,10 @@ function Registration() {
         console.log("Correct Password");
       }
     }
+
+
+
+
   };
 
   return (

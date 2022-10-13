@@ -9,7 +9,7 @@ const Search = () => {
       </span>
       <input
         type="text"
-        className="shadow-lg shadow-black-500/50 p-3.5 pl-12 mt-3 w-[540px] rounded-2xl focus:outline-none"
+        className="shadow-lg shadow-black-500/50 p-3.5 pl-12 mt-3 w-full xl:w-[540px] rounded-2xl focus:outline-none"
         placeholder="Search"
       />
 
