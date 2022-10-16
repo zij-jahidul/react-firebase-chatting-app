@@ -20,7 +20,7 @@ const Sidebar = ({ active }) => {
         <Link to="/">
           <div
             className={`${active === "home" &&
-              "relative z-10 after:absolute after:top-0 after:left-[-5px] xl:after:left-0 after:bg-white after:w-[130%] xl:after:w-[242%] after:h-full after:content-[''] text-center flex flex-col items-center after:z-[-1] xl:p-10 after:rounded-2xl before:absolute before:top-0 before:right-[-32px] before:roundedxl:before:bg-primary xl:before:w-[15px] before:h-full before:content-[''] before:shadow-lg shadow-cyan-500/5"
+              "relative z-10 after:absolute after:top-0 after:left-[-5px] xl:after:left-0 after:bg-white after:w-[130%] xl:after:w-[242%] after:h-full after:content-[''] text-center flex flex-col items-center after:z-[-1] xl:p-10 after:rounded-2xl before:absolute before:top-0 before:right-[-32px] before:rounded xl:before:bg-primary xl:before:w-[15px] before:h-full before:content-[''] before:shadow-lg shadow-cyan-500/5"
               }`}
           >
             <AiOutlineHome
@@ -36,7 +36,7 @@ const Sidebar = ({ active }) => {
         <Link to="/message">
           <div
             className={`${active === "message" &&
-              "relative z-10 after:absolute after:top-0 after:left-[-5px] xl:after:left-0 after:bg-white after:w-[130%] xl:after:w-[242%] after:h-full after:content-[''] text-center flex flex-col items-center after:z-[-1] xl:p-10 after:rounded-2xl before:absolute before:top-0 before:right-[-32px] before:roundedxl:before:bg-primary xl:before:w-[15px] before:h-full before:content-[''] before:shadow-lg shadow-cyan-500/5"
+              "relative z-10 after:absolute after:top-0 after:left-[-5px] xl:after:left-0 after:bg-white after:w-[130%] xl:after:w-[242%] after:h-full after:content-[''] text-center flex flex-col items-center after:z-[-1] xl:p-10 after:rounded-2xl before:absolute before:top-0 before:right-[-32px] before:rounded xl:before:bg-primary xl:before:w-[15px] before:h-full before:content-[''] before:shadow-lg shadow-cyan-500/5"
               }`}
           >
             <FiMessageSquare

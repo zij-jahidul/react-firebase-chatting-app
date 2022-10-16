@@ -2,15 +2,18 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { RiEyeCloseFill, RiEyeFill } from "react-icons/ri";
 import { FcGoogle } from "react-icons/fc";
-// import {
-//   getAuth,
-//   createUserWithEmailAndPassword,
-//   sendEmailVerification,
-//   updateProfile,
-// } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+  updateProfile,
+} from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import { ThreeDots } from "react-loader-spinner";
 
 function Registration() {
-  // const auth = getAuth();
+  const auth = getAuth();
+  let navigate = useNavigate();
   const [email, setEmail] = useState();
   const [fullname, setFullname] = useState();
   const [password, setPassword] = useState();
@@ -28,7 +31,10 @@ function Registration() {
   // password show icon for state
   const [show, setShow] = useState(false);
 
-
+  // registration
+  let [emailError, setEmailError] = useState("");
+  let [success, setSuccess] = useState("");
+  let [loading, setLoading] = useState(false);
 
   // all password is correct
   const [passCorrect, setPassCorrect] = useState(false);
@@ -134,8 +140,45 @@ function Registration() {
     }
 
 
+    if (
+      email &&
+      password &&
+      fullname &&
+      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
+      &&
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/.test(password)
 
-
+    ) {
+      setLoading(true);
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((user) => {
+          updateProfile(auth.currentUser, {
+            displayName: fullname,
+            photoURL: "images/profile.jpg",
+          })
+            .then(() => {
+              console.log(user);
+              sendEmailVerification(auth.currentUser).then(() => {
+                setLoading(false);
+                setSuccess(
+                  "Registration Successfull. Please varify your email address"
+                );
+                setTimeout(() => {
+                  navigate("/login");
+                }, 2000);
+              });
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          if (errorCode.includes("auth/email-already-in-use")) {
+            setEmailError("Email alredy in use");
+          }
+        });
+    }
   };
 
   return (
@@ -148,6 +191,17 @@ function Registration() {
           <p className="font-nunito md:text-xl mt-2.5 font-normal text-center md:text-left">
             Free register and you can enjoy it
           </p>
+
+          {emailError && (
+            <p className="font-nunito font-semibold font-sm text-red-500 p-1 rounded mt-2.5">
+              {emailError}
+            </p>
+          )}
+          {success && (
+            <p className="font-nunito font-semibold font-sm text-green-500 p-1 rounded mt-2.5">
+              {success}
+            </p>
+          )}
 
           <Link to="/">
             <div className="border border-solid border-[#B3B3C9] rounded-lg py-4 flex w-[220px] my-10 mx-auto md:mx-0 items-center justify-center cursor-pointer">
@@ -180,7 +234,7 @@ function Registration() {
                 Full Name
               </p>
               <input
-                type="email"
+                type="text"
                 className={`border-solid w-full py-6 border mt-9 rounded-lg px-10 placeholder:text-inputcolor placeholder:font-semibold focus:outline-none ${fullnameErr ? "border-red-500" : "border-[#B8B9CE]"
                   }`}
                 placeholder="Enter Full Name"
@@ -252,12 +306,29 @@ function Registration() {
               )}
             </div>
 
-            <button
+
+
+            {loading ? (
+              <ThreeDots
+                height="80"
+                width="80"
+                radius="9"
+                color="#5F35F5"
+                ariaLabel="three-dots-loading"
+                wrapperStyle={{ justifyContent: 'center' }}
+                visible={true}
+              />
+            ) : (<button
               onClick={handleSubmit}
               className="w-full text-center bg-primary py-5 font-nunito font-semibold text-xl text-white mt-10 rounded-full"
             >
               Sign up
-            </button>
+            </button>)
+            }
+
+
+
+
 
             <p className="font-nunito mt-7 w-full font-normal text-sm text-center">
               Already have an account ?
