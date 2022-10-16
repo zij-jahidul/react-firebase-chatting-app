@@ -2,10 +2,27 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { RiEyeCloseFill, RiEyeFill } from "react-icons/ri";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
+  sendPasswordResetEmail,
+} from "firebase/auth";
+
+import { useNavigate } from "react-router-dom";
+import { ThreeDots } from "react-loader-spinner";
+import { ToastContainer, toast } from "react-toastify";
 
 function Login() {
+  const auth = getAuth();
+  let navigate = useNavigate();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+
+  // error, success, loading
+  let [error, setError] = useState("");
+  let [loading, setLoading] = useState(false);
 
   // validation error
   const [emailErr, setEmailErr] = useState();
@@ -37,16 +54,50 @@ function Login() {
         setEmailErr("Valid email is required.");
       }
     }
-
     if (!password) {
       setPasswordErr("Password Field is required.");
     }
+
+    if (
+      email &&
+      password &&
+      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email) &&
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/.test(password)
+    ) {
+      setLoading(true);
+      signInWithEmailAndPassword(auth, email, password)
+        .then((user) => {
+          toast("Login Successfull! Wait for redirect");
+          setTimeout(() => {
+            setLoading(false);
+            navigate("/");
+          }, 2000);
+        })
+        .catch((error) => {
+          setLoading(false);
+          const errorCode = error.code;
+          console.log(errorCode);
+          if (errorCode.includes("auth/wrong-password")) {
+            setError("Password Not match");
+          }
+          if (errorCode.includes("auth/user-not-found")) {
+            setError("Email not match");
+          }
+        });
+    }
   };
+
 
   return (
     <div className="sm:flex">
       <div className="md:w-1/2 flex flex-col items-center md:items-end md:mr-[69px] mx-[30px] justify-center">
+        <ToastContainer position="bottom-center" theme="dark" />
         <div className="md:w-[520px]">
+          {error && (
+            <p className="font-nunito font-semibold font-sm text-red-500 p-1 rounded mt-2.5">
+              {error}
+            </p>
+          )}
           <h2 className="font-nunito md:text-4xl font-bold text-center md:text-left mt-10 sm:mt-0">
             Login to your account!
           </h2>
@@ -106,12 +157,23 @@ function Login() {
               )}
             </div>
 
-            <button
+            {loading ? (
+              <ThreeDots
+                height="80"
+                width="80"
+                radius="9"
+                color="#5F35F5"
+                ariaLabel="three-dots-loading"
+                wrapperStyle={{ justifyContent: 'center' }}
+                visible={true}
+              />
+            ) : (<button
               onClick={handleSubmit}
               className="w-full text-center bg-primary py-5 font-nunito font-semibold text-xl text-white mt-10 rounded-lg"
             >
               Login to Continue
-            </button>
+            </button>)
+            }
 
             <p className="font-nunito mt-7 w-full font-normal text-sm">
               Don’t have an account ?
@@ -122,6 +184,8 @@ function Login() {
                 Sign Up
               </Link>
             </p>
+
+
           </div>
         </div>
       </div>
@@ -135,6 +199,8 @@ function Login() {
           />
         </picture>
       </div>
+
+
     </div>
   );
 }

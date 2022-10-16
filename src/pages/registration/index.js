@@ -139,7 +139,6 @@ function Registration() {
       }
     }
 
-
     if (
       email &&
       password &&
@@ -147,7 +146,6 @@ function Registration() {
       /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
       &&
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/.test(password)
-
     ) {
       setLoading(true);
       createUserWithEmailAndPassword(auth, email, password)
@@ -306,8 +304,6 @@ function Registration() {
               )}
             </div>
 
-
-
             {loading ? (
               <ThreeDots
                 height="80"
@@ -325,10 +321,6 @@ function Registration() {
               Sign up
             </button>)
             }
-
-
-
-
 
             <p className="font-nunito mt-7 w-full font-normal text-sm text-center">
               Already have an account ?
