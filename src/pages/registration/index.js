@@ -152,7 +152,7 @@ function Registration() {
         .then((user) => {
           updateProfile(auth.currentUser, {
             displayName: fullname,
-            photoURL: "images/profile.jpg",
+            photoURL: "images/avatar.webp",
           })
             .then(() => {
               console.log(user);
@@ -175,6 +175,7 @@ function Registration() {
           if (errorCode.includes("auth/email-already-in-use")) {
             setEmailError("Email alredy in use");
           }
+          setLoading(false);
         });
     }
   };

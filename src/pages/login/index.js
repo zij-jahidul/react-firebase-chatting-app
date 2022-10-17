@@ -31,6 +31,7 @@ function Login() {
   const [passwordErr, setPasswordErr] = useState();
   // password show icon for state
   const [show, setShow] = useState(false);
+  const [forgetshow, setForgetShow] = useState(false);
   // forgetpassword
   let [forgotEmail, setForgotEmail] = useState("");
 
@@ -48,6 +49,11 @@ function Login() {
   const handlerPasswordShow = () => {
     setShow(!show);
   };
+
+  const setForgetPassShow = () => {
+    setForgetShow(!forgetshow);
+  };
+
 
   // google login handler
   let handleGoogleLogin = () => {
@@ -205,7 +211,7 @@ function Login() {
 
             <p className="font-nunito font-regular text-xs mt-9 w-full text-center">
               <button
-                onClick={() => setShow(!show)}
+                onClick={() => setForgetPassShow(!forgetshow)}
                 className="font-bold text-primary"
                 to="/forgotpassword"
               >
@@ -228,7 +234,7 @@ function Login() {
       </div>
 
       {/* ForgetPassword Modal */}
-      {show && (
+      {forgetshow && (
         <div className="w-full h-screen bg-primary flex justify-center items-center fixed">
           <div className="p-10 bg-white rounded">
             <h1 className="text-5xl text-primary font-bold font-nunito">
@@ -248,7 +254,7 @@ function Login() {
               Change Password
             </button>
             <button
-              onClick={() => setShow(false)}
+              onClick={() => setForgetPassShow(false)}
               className=" text-center ml-5 bg-[#EA6C00] rounded-[5px] p-5 font-nunito font-semibold text-xl text-white mt-5 sml:mt-4 md:!mt-5"
             >
               Cancel
