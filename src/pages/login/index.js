@@ -16,21 +16,21 @@ import { ToastContainer, toast } from "react-toastify";
 
 function Login() {
   const auth = getAuth();
+  // push route
   let navigate = useNavigate();
+  // google login
+  const provider = new GoogleAuthProvider();
+  // state management
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-
   // error, success, loading
   let [error, setError] = useState("");
   let [loading, setLoading] = useState(false);
-
   // validation error
   const [emailErr, setEmailErr] = useState();
   const [passwordErr, setPasswordErr] = useState();
-
   // password show icon for state
   const [show, setShow] = useState(false);
-
   // forgetpassword
   let [forgotEmail, setForgotEmail] = useState("");
 
@@ -47,6 +47,13 @@ function Login() {
   // password show handler
   const handlerPasswordShow = () => {
     setShow(!show);
+  };
+
+  // google login handler
+  let handleGoogleLogin = () => {
+    signInWithPopup(auth, provider).then(() => {
+      navigate("/");
+    });
   };
 
   const handleSubmit = () => {
@@ -99,8 +106,6 @@ function Login() {
     });
   };
 
-
-
   return (
     <div className="sm:flex">
       <div className="md:w-1/2 flex flex-col items-center md:items-end md:mr-[69px] mx-[30px] justify-center">
@@ -115,11 +120,11 @@ function Login() {
             Login to your account!
           </h2>
 
-          <Link to="/">
-            <div className="border border-solid border-[#B3B3C9] rounded-lg py-4 flex w-[220px] my-10 mx-auto md:mx-0 items-center justify-center cursor-pointer">
-              <FcGoogle className="mr-3 text-lg" /> Go to Home
-            </div>
-          </Link>
+
+          <div onClick={handleGoogleLogin} className="border border-solid border-[#B3B3C9] rounded-lg py-4 flex w-[220px] my-10 mx-auto md:mx-0 items-center justify-center cursor-pointer">
+            <FcGoogle className="mr-3 text-lg" /> Login with Google
+          </div>
+
 
           <div className="w-[320px] md:w-[420px] mt-5">
             <div className="mb-10">
