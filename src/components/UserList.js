@@ -9,6 +9,8 @@ const UserList = () => {
   let auth = getAuth();
 
   let [userslist, setUserslist] = useState([]);
+  let [friend, setFriend] = useState([]);
+  let [friendlist, setFriendlist] = useState([]);
 
   useEffect(() => {
     const usersRef = ref(db, "users/");
@@ -22,6 +24,40 @@ const UserList = () => {
       setUserslist(arr);
     });
   }, []);
+
+  let handleFriendRequest = (item) => {
+    set(push(ref(db, "friendrequest")), {
+      sendername: auth.currentUser.displayName,
+      senderid: auth.currentUser.uid,
+      receiverid: item.id,
+      receivername: item.name,
+    });
+  };
+
+  useEffect(() => {
+    const friendRef = ref(db, "friendrequest/");
+    onValue(friendRef, (snapshot) => {
+      let friendArr = [];
+      snapshot.forEach((item) => {
+        friendArr.push(item.val().receiverid + item.val().senderid);
+      });
+      setFriend(friendArr);
+    });
+  }, []);
+
+
+  useEffect(() => {
+    // let friendRequestArr2 = []
+    const friendRef = ref(db, "friends");
+    onValue(friendRef, (snapshot) => {
+      let friendArr = [];
+      snapshot.forEach((item) => {
+        friendArr.push(item.val().receiverid + item.val().senderid);
+      });
+      setFriendlist(friendArr);
+    });
+  }, []);
+
 
   return (
     <div className="shadow-lg shadow-black-500/50 p-5 h-[455px] overflow-y-auto scrollbar-hide rounded-3xl mt-5">
@@ -53,9 +89,27 @@ const UserList = () => {
             </div>
           </div>
           <div>
-            <button className="font-nunito font-bold text-md text-white bg-primary px-2.5 py-1.5 rounded">
-              +
-            </button>
+
+            {friendlist.includes(item.id + auth.currentUser.uid) ||
+              friendlist.includes(auth.currentUser.uid + item.id) ? (
+              <button className="font-nunito font-bold text-md text-white bg-primary px-2.5 py-1.5 rounded">
+                Friend
+              </button>
+            ) : friend.includes(item.id + auth.currentUser.uid) ||
+              friend.includes(auth.currentUser.uid + item.id) ? (
+              <button className="font-nunito font-bold text-md text-white bg-primary px-2.5 py-1.5 rounded">
+                Pending
+              </button>
+            ) : (
+              <button
+                onClick={() => handleFriendRequest(item)}
+                className="font-nunito font-bold text-md text-white bg-primary px-2.5 py-1.5 rounded"
+              >
+                Send Request
+              </button>
+            )}
+
+
           </div>
         </div>
       ))}

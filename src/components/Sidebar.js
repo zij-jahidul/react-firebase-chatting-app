@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import Cropper from "react-cropper";
 import "cropperjs/dist/cropper.css";
-import { Blocks } from "react-loader-spinner";
+import { ThreeDots } from "react-loader-spinner";
 import {
   getStorage,
   ref,
@@ -193,13 +193,14 @@ const Sidebar = ({ active }) => {
               }}
             />
             {loading ? (
-              <Blocks
-                visible={true}
+              <ThreeDots
                 height="80"
                 width="80"
-                ariaLabel="blocks-loading"
-                wrapperStyle={{}}
-                wrapperClass="blocks-wrapper"
+                radius="9"
+                color="#5F35F5"
+                ariaLabel="three-dots-loading"
+                wrapperStyle={{ justifyContent: 'center' }}
+                visible={true}
               />
             ) : (
               <>
