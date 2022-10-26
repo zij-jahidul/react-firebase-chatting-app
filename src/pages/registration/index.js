@@ -10,9 +10,11 @@ import {
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { ThreeDots } from "react-loader-spinner";
+import { getDatabase, ref, set } from "firebase/database";
 
 function Registration() {
   const auth = getAuth();
+  const db = getDatabase();
   let navigate = useNavigate();
   const [email, setEmail] = useState();
   const [fullname, setFullname] = useState();
@@ -155,7 +157,6 @@ function Registration() {
             photoURL: "images/avatar.webp",
           })
             .then(() => {
-              console.log(user);
               sendEmailVerification(auth.currentUser).then(() => {
                 setLoading(false);
                 setSuccess(
@@ -164,6 +165,20 @@ function Registration() {
                 setTimeout(() => {
                   navigate("/login");
                 }, 2000);
+              }).then(() => {
+                set(ref(db, "users/" + user.user.uid), {
+                  name: user.user.displayName,
+                  photoURL: user.user.photoURL,
+                  email: user.user.email,
+                })
+                  .then(() => {
+                    setTimeout(() => {
+                      navigate("/login");
+                    }, 2000);
+                  })
+                  .catch((error) => {
+                    console.log(error);
+                  });
               });
             })
             .catch((error) => {
