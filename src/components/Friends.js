@@ -20,22 +20,40 @@ const Friends = () => {
       let arr = [];
       snapshot.forEach((item) => {
         if (
-          auth.currentUser.uid == item.val().receiverid ||
-          auth.currentUser.uid == item.val().senderid
+          auth.currentUser.uid === item.val().receiverid ||
+          auth.currentUser.uid === item.val().senderid
         ) {
-          arr.push(item.val());
+          arr.push({ ...item.val(), key: item.key });
         }
       });
       setFriends(arr);
     });
   }, []);
 
+  let handleBlock = (item) => {
+    auth.currentUser.uid === item.senderid
+      ? set(push(ref(db, "blockusers")), {
+          block: item.receivername,
+          blockid: item.receiverid,
+          blockby: item.sendername,
+          blockbyid: item.senderid,
+        }).then(() => {
+          remove(ref(db, "friends/" + item.key));
+        })
+      : set(push(ref(db, "blockusers")), {
+          block: item.sendername,
+          blockid: item.senderid,
+          blockby: item.receivername,
+          blockbyid: item.receiverid,
+        }).then(() => {
+          remove(ref(db, "friends/" + item.key));
+        });
+  };
+
   return (
     <div className="shadow-lg shadow-black-500/50 p-5 h-[455px] overflow-y-auto scrollbar-hide rounded-3xl mt-5">
       <div className="flex justify-between">
-        <h3 className="font-nunito font-semibold text-xl">
-          Friends
-        </h3>
+        <h3 className="font-nunito font-semibold text-xl">Friends</h3>
 
         <span>
           <Link to="#">
@@ -62,16 +80,21 @@ const Friends = () => {
                   <h1>{item.sendername} </h1>
                 )}
               </h3>
-              <p className="font-nunito font-normal text-sm text-[#4D4D4D]">Hi Guys, Wassup!</p>
+              <p className="font-nunito font-normal text-sm text-[#4D4D4D]">
+                Hi Guys, Wassup!
+              </p>
             </div>
           </div>
           <div>
-            <span className="font-nunito font-normal text-xs text-[#4D4D4D]">Today, 8:56pm</span>
+            <button
+              onClick={() => handleBlock(item)}
+              className="font-nunito font-bold text-md text-white bg-primary px-2.5 py-1.5 rounded"
+            >
+              Block
+            </button>
           </div>
         </div>
       ))}
-
-
     </div>
   );
 };

@@ -21,7 +21,7 @@ const FriendRequest = () => {
       let arr = [];
       snapshot.forEach((item) => {
         console.log(item.val());
-        if (item.val().receiverid == auth.currentUser.uid) {
+        if (item.val().receiverid === auth.currentUser.uid) {
           arr.push({ ...item.val(), id: item.key });
         }
       });
@@ -36,20 +36,18 @@ const FriendRequest = () => {
       senderid: item.senderid,
       receiverid: item.receiverid,
       receivername: item.receivername,
-      date: `${new Date().getDate()}/${new Date().getMonth() + 1
-        }/${new Date().getFullYear()}`,
+      date: `${new Date().getDate()}/${
+        new Date().getMonth() + 1
+      }/${new Date().getFullYear()}`,
     }).then(() => {
       remove(ref(db, "friendrequest/" + item.id));
     });
   };
 
-
   return (
     <div className="shadow-lg shadow-black-500/50 p-5 h-[435px] overflow-y-auto scrollbar-hide rounded-3xl mt-5">
       <div className="flex justify-between">
-        <h3 className="font-nunito font-semibold text-xl">
-          Friend Request
-        </h3>
+        <h3 className="font-nunito font-semibold text-xl">Friend Request</h3>
 
         <span>
           <Link to="#">
@@ -69,25 +67,31 @@ const FriendRequest = () => {
               />
             </picture>
             <div>
-              <h3 className="font-nunito font-bold text-lg">{item.sendername}</h3>
-              <p className="font-nunito font-normal text-sm text-[#4D4D4D]">example@gmail.com</p>
+              <h3 className="font-nunito font-bold text-lg">
+                {item.sendername}
+              </h3>
+              <p className="font-nunito font-normal text-sm text-[#4D4D4D]">
+                example@gmail.com
+              </p>
             </div>
           </div>
 
           <div>
-            <button onClick={() => handleAcceptFriendRequest(item)} className="font-nunito font-bold text-md text-white bg-primary p-1.5 rounded">
+            <button
+              onClick={() => handleAcceptFriendRequest(item)}
+              className="font-nunito font-bold text-md text-white bg-primary p-1.5 rounded"
+            >
               Accept
             </button>
           </div>
         </div>
       ))}
 
-      {friendrequest.length == 0 && (
-        <h2 className="text-red-500 flex justify-center mt-10 font-nunito font-bold text-2xl">No Friend Request Here</h2>
+      {friendrequest.length === 0 && (
+        <h2 className="text-red-500 flex justify-center mt-10 font-nunito font-bold text-2xl">
+          No Friend Request Here
+        </h2>
       )}
-
-
-
     </div>
   );
 };

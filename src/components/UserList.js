@@ -11,6 +11,7 @@ const UserList = () => {
   let [userslist, setUserslist] = useState([]);
   let [friend, setFriend] = useState([]);
   let [friendlist, setFriendlist] = useState([]);
+  const [blockList, setBlockList] = useState([]);
 
   useEffect(() => {
     const usersRef = ref(db, "users/");
@@ -45,6 +46,16 @@ const UserList = () => {
     });
   }, []);
 
+  useEffect(() => {
+    const blockedUsersRef = ref(db, "blockusers/");
+    onValue(blockedUsersRef, (snapshot) => {
+      let arr = [];
+      snapshot.forEach((item) => {
+        arr.push(item.val().blockedId + item.val().blockedById);
+      });
+      setBlockList(arr);
+    });
+  }, []);
 
   useEffect(() => {
     // let friendRequestArr2 = []
@@ -58,13 +69,10 @@ const UserList = () => {
     });
   }, []);
 
-
   return (
     <div className="shadow-lg shadow-black-500/50 p-5 h-[455px] overflow-y-auto scrollbar-hide rounded-3xl mt-5">
       <div className="flex justify-between">
-        <h3 className="font-nunito font-semibold text-xl">
-          Users
-        </h3>
+        <h3 className="font-nunito font-semibold text-xl">Users</h3>
 
         <span>
           <Link to="#">
@@ -85,13 +93,16 @@ const UserList = () => {
             </picture>
             <div>
               <h3 className="font-nunito font-bold text-lg">{item.name}</h3>
-              <p className="font-nunito font-normal text-sm text-[#4D4D4D]">{item.email}</p>
+              <p className="font-nunito font-normal text-sm text-[#4D4D4D]">
+                {item.email}
+              </p>
             </div>
           </div>
           <div>
+            {/*  ? "" */}
 
             {friendlist.includes(item.id + auth.currentUser.uid) ||
-              friendlist.includes(auth.currentUser.uid + item.id) ? (
+            friendlist.includes(auth.currentUser.uid + item.id) ? (
               <button className="font-nunito font-bold text-md text-white bg-primary px-2.5 py-1.5 rounded">
                 Friend
               </button>
@@ -100,20 +111,21 @@ const UserList = () => {
               <button className="font-nunito font-bold text-md text-white bg-primary px-2.5 py-1.5 rounded">
                 Pending
               </button>
-            ) : (
+            ) : blockList.includes(auth.currentUser.uid + item.id) ? (
               <button
                 onClick={() => handleFriendRequest(item)}
                 className="font-nunito font-bold text-md text-white bg-primary px-2.5 py-1.5 rounded"
               >
                 Send Request
               </button>
+            ) : (
+              <button className="font-nunito font-bold text-md text-white bg-primary px-2.5 py-1.5 rounded">
+                Blocked
+              </button>
             )}
-
-
           </div>
         </div>
       ))}
-
     </div>
   );
 };
