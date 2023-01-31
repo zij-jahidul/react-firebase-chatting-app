@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { RiEyeCloseFill, RiEyeFill } from "react-icons/ri";
+import { useDispatch } from "react-redux";
+import { userLoginInfo } from "../../slices/userSlice";
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -16,6 +18,7 @@ import { ToastContainer, toast } from "react-toastify";
 
 function Login() {
   const auth = getAuth();
+  const dispatch = useDispatch();
   // push route
   let navigate = useNavigate();
   // google login
@@ -54,7 +57,6 @@ function Login() {
     setForgetShow(!forgetshow);
   };
 
-
   // google login handler
   let handleGoogleLogin = () => {
     signInWithPopup(auth, provider).then(() => {
@@ -78,12 +80,17 @@ function Login() {
       email &&
       password &&
       /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email) &&
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/.test(password)
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/.test(
+        password
+      )
     ) {
       setLoading(true);
       signInWithEmailAndPassword(auth, email, password)
         .then((user) => {
           toast("Login Successfull! Wait for redirect");
+          dispatch(userLoginInfo(user.user));
+          localStorage.setItem("userInfo", JSON.stringify(user));
+
           setTimeout(() => {
             setLoading(false);
             navigate("/");
@@ -126,11 +133,12 @@ function Login() {
             Login to your account!
           </h2>
 
-
-          <div onClick={handleGoogleLogin} className="border border-solid border-[#B3B3C9] rounded-lg py-4 flex w-[220px] my-10 mx-auto md:mx-0 items-center justify-center cursor-pointer">
+          <div
+            onClick={handleGoogleLogin}
+            className="border border-solid border-[#B3B3C9] rounded-lg py-4 flex w-[220px] my-10 mx-auto md:mx-0 items-center justify-center cursor-pointer"
+          >
             <FcGoogle className="mr-3 text-lg" /> Login with Google
           </div>
-
 
           <div className="w-[320px] md:w-[420px] mt-5">
             <div className="mb-10">
@@ -188,16 +196,17 @@ function Login() {
                 radius="9"
                 color="#5F35F5"
                 ariaLabel="three-dots-loading"
-                wrapperStyle={{ justifyContent: 'center' }}
+                wrapperStyle={{ justifyContent: "center" }}
                 visible={true}
               />
-            ) : (<button
-              onClick={handleSubmit}
-              className="w-full text-center bg-primary py-5 font-nunito font-semibold text-xl text-white mt-10 rounded-lg"
-            >
-              Login to Continue
-            </button>)
-            }
+            ) : (
+              <button
+                onClick={handleSubmit}
+                className="w-full text-center bg-primary py-5 font-nunito font-semibold text-xl text-white mt-10 rounded-lg"
+              >
+                Login to Continue
+              </button>
+            )}
 
             <p className="font-nunito mt-7 w-full font-normal text-sm">
               Don’t have an account ?
@@ -218,7 +227,6 @@ function Login() {
                 Forgot Password?
               </button>
             </p>
-
           </div>
         </div>
       </div>
@@ -262,7 +270,6 @@ function Login() {
           </div>
         </div>
       )}
-
     </div>
   );
 }
