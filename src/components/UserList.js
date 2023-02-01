@@ -72,11 +72,11 @@ const UserList = () => {
   return (
     <div className="shadow-lg shadow-black-500/50 p-5 h-[455px] overflow-y-auto scrollbar-hide rounded-3xl mt-5">
       <div className="flex justify-between">
-        <h3 className="font-nunito font-semibold text-xl">Users</h3>
+        <h3 className="font-nuncio font-semibold text-xl">Users</h3>
 
         <span>
           <Link to="#">
-            <BiDotsVerticalRounded className="font-nunito font-semibold text-[28px] text-primary cursor-pointer" />
+            <BiDotsVerticalRounded className="font-nuncio font-semibold text-[28px] text-primary cursor-pointer" />
           </Link>
         </span>
       </div>
@@ -92,8 +92,8 @@ const UserList = () => {
               />
             </picture>
             <div>
-              <h3 className="font-nunito font-bold text-lg">{item.name}</h3>
-              <p className="font-nunito font-normal text-sm text-[#4D4D4D]">
+              <h3 className="font-nuncio font-bold text-lg">{item.name}</h3>
+              <p className="font-nuncio font-normal text-sm text-[#4D4D4D]">
                 {item.email}
               </p>
             </div>
@@ -103,23 +103,23 @@ const UserList = () => {
 
             {friendlist.includes(item.id + auth.currentUser.uid) ||
             friendlist.includes(auth.currentUser.uid + item.id) ? (
-              <button className="font-nunito font-bold text-md text-white bg-primary px-2.5 py-1.5 rounded">
+              <button className="font-nuncio font-bold text-md text-white bg-primary px-2.5 py-1.5 rounded">
                 Friend
               </button>
             ) : friend.includes(item.id + auth.currentUser.uid) ||
               friend.includes(auth.currentUser.uid + item.id) ? (
-              <button className="font-nunito font-bold text-md text-white bg-primary px-2.5 py-1.5 rounded">
+              <button className="font-nuncio font-bold text-md text-white bg-primary px-2.5 py-1.5 rounded">
                 Pending
               </button>
             ) : blockList.includes(auth.currentUser.uid + item.id) ? (
               <button
                 onClick={() => handleFriendRequest(item)}
-                className="font-nunito font-bold text-md text-white bg-primary px-2.5 py-1.5 rounded"
+                className="font-nuncio font-bold text-md text-white bg-primary px-2.5 py-1.5 rounded"
               >
                 Send Request
               </button>
             ) : (
-              <button className="font-nunito font-bold text-md text-white bg-primary px-2.5 py-1.5 rounded">
+              <button className="font-nuncio font-bold text-md text-white bg-primary px-2.5 py-1.5 rounded">
                 Blocked
               </button>
             )}

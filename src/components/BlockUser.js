@@ -55,11 +55,11 @@ const BlockUser = () => {
   return (
     <div className="shadow-lg shadow-black-500/50 p-5 h-[435px] overflow-y-auto scrollbar-hide rounded-3xl mt-5">
       <div className="flex justify-between">
-        <h3 className="font-nunito font-semibold text-xl">Block User</h3>
+        <h3 className="font-nuncio font-semibold text-xl">Block User</h3>
 
         <span>
           <Link to="#">
-            <BiDotsVerticalRounded className="font-nunito font-semibold text-[28px] cursor-pointer text-primary" />
+            <BiDotsVerticalRounded className="font-nuncio font-semibold text-[28px] cursor-pointer text-primary" />
           </Link>
         </span>
       </div>
@@ -75,8 +75,8 @@ const BlockUser = () => {
               />
             </picture>
             <div>
-              <h3 className="font-nunito font-bold text-lg">{item.block}</h3>
-              <p className="font-nunito font-normal text-sm text-[#4D4D4D]">
+              <h3 className="font-nuncio font-bold text-lg">{item.block}</h3>
+              <p className="font-nuncio font-normal text-sm text-[#4D4D4D]">
                 Hi Guys, Wassup!
               </p>
             </div>
@@ -85,7 +85,7 @@ const BlockUser = () => {
             {!item.blockbyid && (
               <button
                 onClick={() => handleUnblock(item)}
-                className="font-nunito font-bold text-md text-white bg-primary p-1.5 rounded"
+                className="font-nuncio font-bold text-md text-white bg-primary p-1.5 rounded"
               >
                 Unblock
               </button>

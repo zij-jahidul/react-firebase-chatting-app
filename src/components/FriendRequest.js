@@ -47,11 +47,11 @@ const FriendRequest = () => {
   return (
     <div className="shadow-lg shadow-black-500/50 p-5 h-[435px] overflow-y-auto scrollbar-hide rounded-3xl mt-5">
       <div className="flex justify-between">
-        <h3 className="font-nunito font-semibold text-xl">Friend Request</h3>
+        <h3 className="font-nuncio font-semibold text-xl">Friend Request</h3>
 
         <span>
           <Link to="#">
-            <BiDotsVerticalRounded className="font-nunito font-semibold text-[28px] cursor-pointer text-primary" />
+            <BiDotsVerticalRounded className="font-nuncio font-semibold text-[28px] cursor-pointer text-primary" />
           </Link>
         </span>
       </div>
@@ -67,10 +67,10 @@ const FriendRequest = () => {
               />
             </picture>
             <div>
-              <h3 className="font-nunito font-bold text-lg">
+              <h3 className="font-nuncio font-bold text-lg">
                 {item.sendername}
               </h3>
-              <p className="font-nunito font-normal text-sm text-[#4D4D4D]">
+              <p className="font-nuncio font-normal text-sm text-[#4D4D4D]">
                 example@gmail.com
               </p>
             </div>
@@ -79,7 +79,7 @@ const FriendRequest = () => {
           <div>
             <button
               onClick={() => handleAcceptFriendRequest(item)}
-              className="font-nunito font-bold text-md text-white bg-primary p-1.5 rounded"
+              className="font-nuncio font-bold text-md text-white bg-primary p-1.5 rounded"
             >
               Accept
             </button>
@@ -88,7 +88,7 @@ const FriendRequest = () => {
       ))}
 
       {friendrequest.length === 0 && (
-        <h2 className="text-red-500 flex justify-center mt-10 font-nunito font-bold text-2xl">
+        <h2 className="text-red-500 flex justify-center mt-10 font-nuncio font-bold text-2xl">
           No Friend Request Here
         </h2>
       )}

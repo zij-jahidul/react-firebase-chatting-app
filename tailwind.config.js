@@ -4,13 +4,13 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        nunito: ["Nunito", "sans-serif"],
+        nuncio: ["Nunito", "sans-serif"],
       },
       colors: {
         primary: "#5F35F5",
-        textcolor: "#585D8E",
+        textColor: "#585D8E",
 
-        inputcolor: "#11175D",
+        inputColor: "#11175D",
       },
       screens: {
         smp: "374px",
@@ -20,7 +20,7 @@ module.exports = {
     },
   },
   plugins: [
-    require('tailwind-scrollbar-hide')
+    require("tailwind-scrollbar-hide"),
     // ...
-  ]
+  ],
 };

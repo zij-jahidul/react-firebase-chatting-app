@@ -62,11 +62,11 @@ const Group = () => {
 
   return (
     <div className="shadow-sm shadow-black p-5 h-[427px] overflow-y-scroll rounded-3xl mt-5">
-      <h3 className="font-nunito font-semibold text-xl flex justify-between">
-        Groups List{" "}
+      <h3 className="font-nuncio font-semibold text-xl flex justify-between">
+        Groups List
         <button
           onClick={() => setCgroup(!cgroup)}
-          className="font-nunito font-bold text-lg text-white bg-primary p-1.5 rounded"
+          className="font-nuncio font-bold text-lg text-white bg-primary p-1.5 rounded"
         >
           {cgroup ? "Go back" : "Create Group"}
         </button>
@@ -86,7 +86,7 @@ const Group = () => {
           />
           <button
             onClick={handleCreateGroup}
-            className="w-full text-center bg-primary rounded-[86px] py-2 font-nunito font-semibold text-xl text-white mt-12 sml:mt-4 md:!mt-3"
+            className="w-full text-center bg-primary rounded-[86px] py-2 font-nuncio font-semibold text-xl text-white mt-12 sml:mt-4 md:!mt-3"
           >
             Create Group
           </button>
@@ -100,16 +100,16 @@ const Group = () => {
             />
             <div>
               <span className="text-sm">Admin:{item.adminname}</span>
-              <h3 className="font-nunito font-semibold text-lg">
+              <h3 className="font-nuncio font-semibold text-lg">
                 {item.gname}
               </h3>
 
-              <p className="font-nunito font-semibold text-sm">{item.gtag}</p>
+              <p className="font-nuncio font-semibold text-sm">{item.gtag}</p>
             </div>
             <div>
               <button
                 onClick={() => handleGroupJoin(item)}
-                className="font-nunito font-bold text-lg text-white bg-primary p-1.5 rounded"
+                className="font-nuncio font-bold text-lg text-white bg-primary p-1.5 rounded"
               >
                 Join
               </button>

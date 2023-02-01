@@ -51,8 +51,8 @@ const Home = () => {
         </div>
       ) : (
         <div className="text-center mt-10">
-          <span className="bg-primary rounded p-5 text-5xl font-nunito font-bold text-white inline-block">
-            Please Varify Your Email
+          <span className="bg-primary rounded p-5 text-5xl font-nuncio font-bold text-white inline-block">
+            Please Verify Your Email
           </span>
         </div>
       )}

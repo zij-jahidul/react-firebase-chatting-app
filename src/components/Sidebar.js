@@ -109,55 +109,58 @@ const Sidebar = ({ active }) => {
         </div>
       </div>
 
-
-      <h4 className="text-white font-bold font-nunito text-sm text-center">
+      <h4 className="text-white font-bold font-nuncio text-sm text-center">
         {auth.currentUser.displayName}
       </h4>
 
-
       <div className="flex xl:flex-col items-center text-white gap-x-5 xl:gap-y-16 xl:mt-14">
-
         <Link to="/">
           <div
-            className={`${active === "home" &&
+            className={`${
+              active === "home" &&
               "relative z-10 after:absolute after:top-0 after:left-[-5px] xl:after:left-0 after:bg-white after:w-[130%] xl:after:w-[242%] after:h-full after:content-[''] text-center flex flex-col items-center after:z-[-1] xl:p-10 after:rounded-2xl before:absolute before:top-0 before:right-[-32px] before:rounded xl:before:bg-primary xl:before:w-[15px] before:h-full before:content-[''] before:shadow-lg shadow-cyan-500/5"
-              }`}
+            }`}
           >
             <AiOutlineHome
-              className={`${active === "home"
-                ? "text-5xl text-primary"
-                : "text-5xl text-white"
-                }`}
+              className={`${
+                active === "home"
+                  ? "text-5xl text-primary"
+                  : "text-5xl text-white"
+              }`}
             />
-
           </div>
         </Link>
 
         <Link to="/message">
           <div
-            className={`${active === "message" &&
+            className={`${
+              active === "message" &&
               "relative z-10 after:absolute after:top-0 after:left-[-5px] xl:after:left-0 after:bg-white after:w-[130%] xl:after:w-[242%] after:h-full after:content-[''] text-center flex flex-col items-center after:z-[-1] xl:p-10 after:rounded-2xl before:absolute before:top-0 before:right-[-32px] before:rounded xl:before:bg-primary xl:before:w-[15px] before:h-full before:content-[''] before:shadow-lg shadow-cyan-500/5"
-              }`}
+            }`}
           >
             <FiMessageSquare
-              className={`${active === "message"
-                ? "text-5xl text-primary"
-                : "text-5xl text-white"
-                }`}
+              className={`${
+                active === "message"
+                  ? "text-5xl text-primary"
+                  : "text-5xl text-white"
+              }`}
             />
           </div>
         </Link>
 
         <IoMdNotificationsOutline className="text-3xl xl:text-5xl" />
         <FiSettings className="text-3xl xl:text-5xl" />
-        <MdLogout onClick={handleSignOut} className="text-3xl xl:text-5xl xl:mt-[105px]" />
-      </div >
+        <MdLogout
+          onClick={handleSignOut}
+          className="text-3xl xl:text-5xl xl:mt-[105px]"
+        />
+      </div>
 
       {/* photo modal */}
       {show && (
         <div className="w-full h-screen bg-primary flex justify-center items-center fixed top-0 left-0 z-[999]">
           <div className="p-10 bg-white rounded">
-            <h1 className="text-5xl text-primary font-bold font-nunito">
+            <h1 className="text-5xl text-primary font-bold font-nuncio">
               Upload Image
             </h1>
             <div className="relative">
@@ -199,19 +202,19 @@ const Sidebar = ({ active }) => {
                 radius="9"
                 color="#5F35F5"
                 ariaLabel="three-dots-loading"
-                wrapperStyle={{ justifyContent: 'center' }}
+                wrapperStyle={{ justifyContent: "center" }}
                 visible={true}
               />
             ) : (
               <>
                 <button
-                  className=" text-center bg-primary rounded-[5px] p-5 font-nunito font-semibold text-xl text-white mt-5 sml:mt-4 md:!mt-5"
+                  className=" text-center bg-primary rounded-[5px] p-5 font-nuncio font-semibold text-xl text-white mt-5 sml:mt-4 md:!mt-5"
                   onClick={getCropData}
                 >
                   Upload
                 </button>
                 <button
-                  className=" text-center ml-5 bg-[#EA6C00] rounded-[5px] p-5 font-nunito font-semibold text-xl text-white mt-5 sml:mt-4 md:!mt-5"
+                  className=" text-center ml-5 bg-[#EA6C00] rounded-[5px] p-5 font-nuncio font-semibold text-xl text-white mt-5 sml:mt-4 md:!mt-5"
                   onClick={handleImageUpload}
                 >
                   Cancel
@@ -221,9 +224,7 @@ const Sidebar = ({ active }) => {
           </div>
         </div>
       )}
-
-
-    </div >
+    </div>
   );
 };
 

@@ -82,12 +82,12 @@ const MyGroups = () => {
 
   return (
     <div className="shadow-sm shadow-black p-5 h-[427px] overflow-y-scroll rounded-3xl mt-5">
-      <h3 className="font-nunito font-semibold text-xl">My Groups</h3>
+      <h3 className="font-nuncio font-semibold text-xl">My Groups</h3>
       {showinfo ? (
         <>
           <button
             onClick={() => setShowInfo(!showinfo)}
-            className="font-nunito font-bold text-lg text-white bg-primary p-1.5 rounded"
+            className="font-nuncio font-bold text-lg text-white bg-primary p-1.5 rounded"
           >
             Back
           </button>
@@ -98,21 +98,21 @@ const MyGroups = () => {
                 className="w-[70px] h-[70px] rounded"
               />
               <div>
-                <h3 className="font-nunito font-semibold text-lg">
+                <h3 className="font-nuncio font-semibold text-lg">
                   {item.username}
                 </h3>
-                <p className="font-nunito font-semibold text-sm">{item.gtag}</p>
+                <p className="font-nuncio font-semibold text-sm">{item.gtag}</p>
               </div>
               <div>
                 <button
                   onClick={() => handleMemberAccept(item)}
-                  className="font-nunito font-bold text-lg text-white bg-primary p-1.5 rounded"
+                  className="font-nuncio font-bold text-lg text-white bg-primary p-1.5 rounded"
                 >
                   Accept
                 </button>
                 <button
                   onClick={() => handleMemberReject(item)}
-                  className="font-nunito font-bold text-lg text-white bg-red-500 p-1.5 rounded ml-2.5"
+                  className="font-nuncio font-bold text-lg text-white bg-red-500 p-1.5 rounded ml-2.5"
                 >
                   Reject
                 </button>
@@ -124,7 +124,7 @@ const MyGroups = () => {
         <>
           <button
             onClick={() => setShowList(false)}
-            className="font-nunito font-bold text-lg text-white bg-primary p-1.5 rounded"
+            className="font-nuncio font-bold text-lg text-white bg-primary p-1.5 rounded"
           >
             Back
           </button>
@@ -135,13 +135,13 @@ const MyGroups = () => {
                 className="w-[70px] h-[70px] rounded"
               />
               <div>
-                <h3 className="font-nunito font-semibold text-lg">
+                <h3 className="font-nuncio font-semibold text-lg">
                   {item.username}
                 </h3>
-                <p className="font-nunito font-semibold text-sm">{item.gtag}</p>
+                <p className="font-nuncio font-semibold text-sm">{item.gtag}</p>
               </div>
               <div>
-                <button className="font-nunito font-bold text-lg text-white bg-primary p-1.5 rounded">
+                <button className="font-nuncio font-bold text-lg text-white bg-primary p-1.5 rounded">
                   Remove
                 </button>
               </div>
@@ -156,22 +156,22 @@ const MyGroups = () => {
               className="w-[70px] h-[70px] rounded"
             />
             <div>
-              <h3 className="font-nunito font-semibold text-lg">
+              <h3 className="font-nuncio font-semibold text-lg">
                 {item.gname}
               </h3>
-              <p className="font-nunito font-semibold text-sm">{item.gtag}</p>
+              <p className="font-nuncio font-semibold text-sm">{item.gtag}</p>
               <span className="text-sm">Admin:{item.adminname}</span>
             </div>
             <div>
               <button
                 onClick={() => handleRequestShow(item)}
-                className="font-nunito font-bold text-lg text-white bg-primary p-1.5 rounded"
+                className="font-nuncio font-bold text-lg text-white bg-primary p-1.5 rounded"
               >
                 Info
               </button>
               <button
                 onClick={() => handleMember(item)}
-                className="font-nunito font-bold text-lg text-white bg-primary p-1.5 rounded ml-2.5"
+                className="font-nuncio font-bold text-lg text-white bg-primary p-1.5 rounded ml-2.5"
               >
                 Members
               </button>

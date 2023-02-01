@@ -53,11 +53,11 @@ const Friends = () => {
   return (
     <div className="shadow-lg shadow-black-500/50 p-5 h-[455px] overflow-y-auto scrollbar-hide rounded-3xl mt-5">
       <div className="flex justify-between">
-        <h3 className="font-nunito font-semibold text-xl">Friends</h3>
+        <h3 className="font-nuncio font-semibold text-xl">Friends</h3>
 
         <span>
           <Link to="#">
-            <BiDotsVerticalRounded className="font-nunito font-semibold text-[28px] cursor-pointer text-primary" />
+            <BiDotsVerticalRounded className="font-nuncio font-semibold text-[28px] cursor-pointer text-primary" />
           </Link>
         </span>
       </div>
@@ -73,14 +73,14 @@ const Friends = () => {
               />
             </picture>
             <div>
-              <h3 className="font-nunito font-bold text-lg">
+              <h3 className="font-nuncio font-bold text-lg">
                 {auth.currentUser.uid == item.senderid ? (
                   <h1>{item.receivername} </h1>
                 ) : (
                   <h1>{item.sendername} </h1>
                 )}
               </h3>
-              <p className="font-nunito font-normal text-sm text-[#4D4D4D]">
+              <p className="font-nuncio font-normal text-sm text-[#4D4D4D]">
                 Hi Guys, Wassup!
               </p>
             </div>
@@ -88,7 +88,7 @@ const Friends = () => {
           <div>
             <button
               onClick={() => handleBlock(item)}
-              className="font-nunito font-bold text-md text-white bg-primary px-2.5 py-1.5 rounded"
+              className="font-nuncio font-bold text-md text-white bg-primary px-2.5 py-1.5 rounded"
             >
               Block
             </button>

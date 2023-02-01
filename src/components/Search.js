@@ -5,7 +5,7 @@ const Search = () => {
   return (
     <div className="relative mt-5">
       <span>
-        <BiSearch className="font-nunito font-semibold text-[28px] cursor-pointer absolute top-6 left-3" />
+        <BiSearch className="font-nuncio font-semibold text-[28px] cursor-pointer absolute top-6 left-3" />
       </span>
       <input
         type="text"
@@ -14,7 +14,7 @@ const Search = () => {
       />
 
       <span>
-        <BiDotsVerticalRounded className="font-nunito font-semibold text-[28px] cursor-pointer text-primary absolute top-6 right-3" />
+        <BiDotsVerticalRounded className="font-nuncio font-semibold text-[28px] cursor-pointer text-primary absolute top-6 right-3" />
       </span>
     </div>
   );
