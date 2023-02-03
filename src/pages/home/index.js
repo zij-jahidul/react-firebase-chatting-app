@@ -7,56 +7,53 @@ import MyGroups from "../../components/MyGroups";
 import Search from "../../components/Search";
 import Sidebar from "../../components/Sidebar";
 import UserList from "../../components/UserList";
-import { getAuth } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const Home = () => {
-  const auth = getAuth();
   let navigate = useNavigate();
-  let [varify, setVarify] = useState(false);
-  let data = useSelector((state) => state.userLoginInfo.userInfo);
-  console.log(data);
+  let [verify, setVerify] = useState(false);
+  const userData = useSelector((state) => state.userLoginInfo.userInfo);
 
   useEffect(() => {
-    if (!auth.currentUser) {
+    if (userData === null) {
       navigate("/login");
-    } else {
-      if (auth.currentUser.emailVerified) {
-        setVarify(true);
-      }
+    } else if (userData.emailVerified) {
+      setVerify(true);
     }
   }, []);
 
   return (
-    <>
-      {varify ? (
-        <div className="xl:flex justify-between p-2.5 xl:p-0">
-          <div className="xl:w-[186px]">
-            <Sidebar active="home" />
+    userData !== null && (
+      <>
+        {verify ? (
+          <div className="xl:flex justify-between p-2.5 xl:p-0">
+            <div className="xl:w-[186px]">
+              <Sidebar active="home" />
+            </div>
+            <div className="xl:w-[540px]">
+              <Search />
+              <Group />
+              <FriendRequest />
+            </div>
+            <div className="xl:w-[540px]">
+              <Friends />
+              <MyGroups />
+            </div>
+            <div className="xl:w-[540px]">
+              <UserList />
+              <BlockUser />
+            </div>
           </div>
-          <div className="xl:w-[540px]">
-            <Search />
-            <Group />
-            <FriendRequest />
+        ) : (
+          <div className="text-center mt-10">
+            <span className="bg-primary rounded p-5 text-5xl font-nuncio font-bold text-white inline-block">
+              Please Verify Your Email
+            </span>
           </div>
-          <div className="xl:w-[540px]">
-            <Friends />
-            <MyGroups />
-          </div>
-          <div className="xl:w-[540px]">
-            <UserList />
-            <BlockUser />
-          </div>
-        </div>
-      ) : (
-        <div className="text-center mt-10">
-          <span className="bg-primary rounded p-5 text-5xl font-nuncio font-bold text-white inline-block">
-            Please Verify Your Email
-          </span>
-        </div>
-      )}
-    </>
+        )}
+      </>
+    )
   );
 };
 

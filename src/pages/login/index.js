@@ -10,13 +10,15 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   sendPasswordResetEmail,
+  updateProfile,
 } from "firebase/auth";
-
+import { getDatabase, ref, set, push } from "firebase/database";
 import { useNavigate } from "react-router-dom";
 import { ThreeDots } from "react-loader-spinner";
 import { ToastContainer, toast } from "react-toastify";
 
 function Login() {
+  const db = getDatabase();
   const auth = getAuth();
   const dispatch = useDispatch();
   // push route
@@ -58,9 +60,30 @@ function Login() {
   };
 
   // google login handler
+  // let handleGoogleLogin = () => {
+  //   signInWithPopup(auth, provider).then(() => {
+  //     navigate("/");
+  //   });
+  // };
+
   let handleGoogleLogin = () => {
-    signInWithPopup(auth, provider).then(() => {
-      navigate("/");
+    signInWithPopup(auth, provider).then((userCredential) => {
+      // const user = userCredential.user;
+      updateProfile(auth.currentUser, {
+        photoURL: "images/default_avatar.png",
+      }).then(() => {
+        const user = auth.currentUser;
+        let userRef = ref(db, "users/" + user.uid);
+        set(userRef, {
+          displayName: user.displayName,
+          email: user.email,
+          photoURL: user.photoURL,
+        }).then(() => {
+          dispatch(userLoginInfo(user));
+          localStorage.setItem("userInfo", JSON.stringify(user));
+          navigate("/");
+        });
+      });
     });
   };
 
@@ -87,10 +110,9 @@ function Login() {
       setLoading(true);
       signInWithEmailAndPassword(auth, email, password)
         .then((user) => {
-          toast("Login Successfull! Wait for redirect");
+          toast("Login Successful! Wait for redirect");
           dispatch(userLoginInfo(user.user));
-          localStorage.setItem("userInfo", JSON.stringify(user));
-
+          localStorage.setItem("userInfo", JSON.stringify(user.user));
           setTimeout(() => {
             setLoading(false);
             navigate("/");

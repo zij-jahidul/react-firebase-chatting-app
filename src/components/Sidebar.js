@@ -17,27 +17,32 @@ import {
   uploadString,
   getDownloadURL,
 } from "firebase/storage";
+import { useDispatch, useSelector } from "react-redux";
+import { userLoginInfo } from "../slices/userSlice";
 
 const Sidebar = ({ active }) => {
   const auth = getAuth();
+  const userData = useSelector((state) => state.userLoginInfo.userInfo);
   let navigate = useNavigate();
   const storage = getStorage();
+  const dispatch = useDispatch();
   let [show, setShow] = useState(false);
-  let [loading, setLoding] = useState(false);
+  let [loading, setLoading] = useState(false);
   let [img, setImg] = useState("");
-  let [pimg, setPimg] = useState("");
-  let [imgname, setImgname] = useState("");
+  let [pImg, setPImg] = useState("");
+  let [imgName, setImgName] = useState("");
   const [cropper, setCropper] = useState();
   const cropperRef = useRef(null);
   const onCrop = () => {
     const imageElement = cropperRef?.current;
     const cropper = imageElement?.cropper;
-    setPimg(cropper.getCroppedCanvas().toDataURL());
+    setPImg(cropper.getCroppedCanvas().toDataURL());
   };
 
-  let handleSignOut = () => {
-    toast("Logout Successfull!");
+  const handleSignOut = () => {
     signOut(auth).then(() => {
+      localStorage.removeItem("userInfo");
+      dispatch(userLoginInfo(null));
       navigate("/login");
     });
   };
@@ -45,11 +50,11 @@ const Sidebar = ({ active }) => {
   let handleImageUpload = () => {
     setShow(!show);
     setImg("");
-    setPimg("");
+    setPImg("");
   };
 
   let handleSelectImage = (e) => {
-    setImgname(e.target.files[0].name);
+    setImgName(e.target.files[0].name);
     let files;
     if (e.dataTransfer) {
       files = e.dataTransfer.files;
@@ -63,22 +68,22 @@ const Sidebar = ({ active }) => {
     reader.readAsDataURL(files[0]);
   };
 
-  // image crope
+  // image crop
   const getCropData = (e) => {
-    setLoding(true);
-    const storageRef = ref(storage, imgname);
+    setLoading(true);
+    const storageRef = ref(storage, imgName);
     if (typeof cropper !== "undefined") {
       cropper.getCroppedCanvas().toDataURL();
       const message4 = cropper.getCroppedCanvas().toDataURL();
       uploadString(storageRef, message4, "data_url").then((snapshot) => {
         getDownloadURL(storageRef).then((downloadURL) => {
           console.log("File available at", downloadURL);
-          updateProfile(auth.currentUser, {
+          updateProfile(userData, {
             photoURL: downloadURL,
           })
             .then(() => {
               console.log("upload ses");
-              setLoding(false);
+              setLoading(false);
               setShow(false);
             })
             .catch((error) => {
@@ -96,7 +101,7 @@ const Sidebar = ({ active }) => {
       <div className="relative overflow-hidden w-[50px] h-[50px] xl:w-[100px] xl:h-[100px] rounded-full group">
         <picture>
           <img
-            src={auth.currentUser.photoURL}
+            src={userData.photoURL}
             alt="profile-01"
             className="w-[50px] h-[50px] xl:w-[100px] xl:h-[100px] rounded-full mb-2"
           />
@@ -110,7 +115,7 @@ const Sidebar = ({ active }) => {
       </div>
 
       <h4 className="text-white font-bold font-nuncio text-sm text-center">
-        {auth.currentUser.displayName}
+        {userData.displayName}
       </h4>
 
       <div className="flex xl:flex-col items-center text-white gap-x-5 xl:gap-y-16 xl:mt-14">
@@ -164,14 +169,14 @@ const Sidebar = ({ active }) => {
               Upload Image
             </h1>
             <div className="relative">
-              {pimg ? (
+              {pImg ? (
                 <img
-                  src={pimg}
+                  src={pImg}
                   className="w-[50px] h-[50px] xl:w-[100px] xl:h-[100px] rounded-full"
                 />
               ) : (
                 <img
-                  src={auth.currentUser.photoURL}
+                  src={userData.photoURL}
                   className="w-[50px] h-[50px] xl:w-[100px] xl:h-[100px] rounded-full"
                 />
               )}
