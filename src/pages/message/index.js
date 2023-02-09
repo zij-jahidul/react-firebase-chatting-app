@@ -1,5 +1,8 @@
 import React from "react";
 import Sidebar from "../../components/Sidebar";
+import JoinGroupList from "../../components/JoinGroupList";
+import Friends from "../../components/Friends";
+import Chat from "../../components/Chat";
 
 const Message = () => {
   return (
@@ -7,15 +10,11 @@ const Message = () => {
       <div className="max-w-[186px]">
         <Sidebar active="message" />
       </div>
-      <div className="max-w-[427px]">
-        <h2>Message Page</h2>
+      <div className="max-w-[540px]">
+        <JoinGroupList />
+        <Friends />
       </div>
-      <div className="max-w-[344px]">
-        <h2>Message Page</h2>
-      </div>
-      <div className="max-w-[344px]">
-        <h2>Message Page</h2>
-      </div>
+      <div className="max-w-[1140px]">{/* <Chat /> */}</div>
     </div>
   );
 };
