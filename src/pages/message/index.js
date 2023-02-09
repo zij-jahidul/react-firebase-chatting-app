@@ -2,7 +2,7 @@ import React from "react";
 import Sidebar from "../../components/Sidebar";
 import JoinGroupList from "../../components/JoinGroupList";
 import Friends from "../../components/Friends";
-import Chat from "../../components/Chat";
+// import Chat from "../../components/Chat";
 
 const Message = () => {
   return (
